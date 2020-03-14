@@ -1,3 +1,4 @@
+const tasks = require('./routes/tasks')
 const Koa = require('koa')
 const app = new Koa()
 const views = require('koa-views')
@@ -41,7 +42,8 @@ app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
 });
 
+app.use(tasks.routes(), tasks.allowedMethods())
+
 module.exports = app
 
 require('./store').init()
-
