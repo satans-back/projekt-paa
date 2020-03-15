@@ -22,7 +22,7 @@ const createTask = async (title, desc) => (
     }
 
     service.insertEntity(table, task, (error, result, response) => {
-      !error ? resolve() : reject()
+      !title ? function() { alert("Not enough info!"); reject(); } : !error ? resolve() : reject()
     })
   })
 )
