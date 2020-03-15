@@ -17,9 +17,8 @@ const createTask = async (title, desc) => (
     const generator = storage.TableUtilities.entityGenerator
     const task = {
       PartitionKey: generator.String('task'),
-      RowKey: generator.String(uuid.v4()),
+      RowKey: desc,
       title,
-      desc
     }
 
     service.insertEntity(table, task, (error, result, response) => {
