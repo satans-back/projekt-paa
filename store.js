@@ -18,12 +18,11 @@ const createTask = async (title, desc) => (
     const task = {
       PartitionKey: generator.String('task'),
       RowKey: desc,
-      title,
+      title
     }
 
-    service.insertEntity(table, task, (error, result, response) => {
-      !title ? function() { alert("Please provide title!"); return reject(); } : service.insertEntity(table, task, (error, result, response) => {
-        !error ? resolve() : reject()
+    !title ? function() { alert("Please remember about task title!"); return reject(); } : service.insertEntity(table, task, (error, result, response) => {
+      !error ? resolve() : reject()
     })
   })
 )
