@@ -16,7 +16,9 @@ block content
       tr
         th(scope="col") Tytuł
         th(scope="col") Opis
+        th(scope="col") Data modyfikacji
       each task in tasks
         tr
           td= task.title
           td= task.desc
+          td= task.Timestamp
