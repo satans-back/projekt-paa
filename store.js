@@ -17,7 +17,7 @@ const createTask = async (title, desc) => (
     const generator = storage.TableUtilities.entityGenerator
     const task = {
       PartitionKey: generator.String('task'),
-      RowKey: String.Format("{0:D19}", DateTime.UtcNow.Ticks),
+      RowKey: generator.String(uuid.v4()),
       title,
       desc,
       status: 'open'
