@@ -10,3 +10,16 @@ const updateTaskStatus = (id, status) => {
       window.location = '/'
     })
 }
+
+const removeTask = (id) => {
+    fetch('/tasks/removeTask', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+      },
+      body: `id=${id}`
+    })
+    .finally(() => {
+      window.location = '/'
+    })
+}

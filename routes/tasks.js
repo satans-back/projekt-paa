@@ -14,4 +14,10 @@ router.post('/updateStatus', async (ctx, next) => {
   ctx.status = 200
 })
 
+router.post('/removeTask', async (ctx, next) => {
+  const { id } = ctx.request.body
+  await store.removeTask(id)
+  ctx.status = 204
+})
+
 module.exports = router

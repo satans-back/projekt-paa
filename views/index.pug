@@ -27,5 +27,6 @@ block content
           td= (task.status == 'completed' ? 'Zakończone' : 'Otwarte')
           td
             button(type="button" onclick=`updateTaskStatus('${task.id}', 'completed')`)  ✓
+            button(type="button" onclick=`removeTask('${task.id}')`)  USUŃ
 block scripts
   script(src="javascripts/index.js")
