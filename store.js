@@ -19,7 +19,7 @@ const createTask = async (title, desc) => (
       PartitionKey: generator.String('task'),
       RowKey: generator.String(uuid.v4()),
       title,
-      Description: desc
+      desc
     }
 
     !title ? function() { alert("Please remember about task title!"); return reject(); } : service.insertEntity(table, task, (error, result, response) => {
@@ -31,12 +31,13 @@ const createTask = async (title, desc) => (
 const listTasks = async () => (
   new Promise((resolve, reject) => {
     const query = new storage.TableQuery()
-      .select(['title'])
+      .select(['title'], ['desc'])
       .where('PartitionKey eq ?', 'task')
 
     service.queryEntities(table, query, null, (error, result, response) => {
       !error ? resolve(result.entries.map((entry) => ({
-        title: entry.title._
+        title: entry.title._,
+        desc: !entry.desc._ ? "BRAK OPISU TASKA" : entry.desc._
       }))) : reject()
     })
   })
