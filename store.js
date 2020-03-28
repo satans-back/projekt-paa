@@ -18,7 +18,7 @@ const createTask = async (title, desc) => (
     const task = {
       PartitionKey: generator.String('task'),
       RowKey: generator.String(uuid.v4()),
-      Title: title,
+      title,
       Description: desc
     }
 
