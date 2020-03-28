@@ -37,6 +37,7 @@ const listTasks = async () => (
 
     service.queryEntities(table, query, null, (error, result, response) => {
       !error ? resolve(result.entries.map((entry) => ({
+        id: entry.RowKey._,
         title: entry.title._,
         desc: !entry.desc._ ? "BRAK OPISU TASKA" : entry.desc._,
         Timestamp: entry.Timestamp._,
